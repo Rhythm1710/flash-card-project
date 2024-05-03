@@ -12,9 +12,9 @@ to_learn = {}
 
 # ---------------------------- CREATING FLASHCARD ------------------------------- #
 try:
-    data = p.read_csv("E:/Python/Course/flash-card-project-start/data/words_to_learn.csv")
+    data = p.read_csv("data_path")
 except:
-    original_data = p.read_csv("E:/Python/Course/flash-card-project-start/data/french_words.csv")
+    original_data = p.read_csv("")
     to_learn = original_data.to_dict(orient="records")
 else:
     to_learn = data.to_dict(orient="records")
@@ -38,7 +38,7 @@ def flip_card():
 def is_known():
     to_learn.remove(current_card)
     data = p.DataFrame(to_learn)
-    data.to_csv("E:/Python/Course/flash-card-project-start/data/words_to_learn.csv",index=False)
+    data.to_csv("data_path",index=False)
     next_card()
 
 
@@ -52,20 +52,20 @@ delay = window.after(3000,flip_card)
 
 #CANVAS
 canvas = Canvas(width=800,height=526,bg=BACKGROUND_COLOR,highlightthickness=0)
-front_img = PhotoImage(file="E:/Python/Course/flash-card-project-start/images/card_front.png")
-back_img = PhotoImage(file="E:/Python/Course/flash-card-project-start/images/card_back.png")
+front_img = PhotoImage(file="")
+back_img = PhotoImage(file="")
 canvas_image = canvas.create_image(400,263,image=front_img)
 title = canvas.create_text(400,150,text="",font=(Font_name,40,"italic"))
 word = canvas.create_text(400,263,text="",font=(Font_name,60,"bold"))
 canvas.grid(column=0,row=0)
 
 #BUTTONS
-wrong_img = PhotoImage(file="E:/Python/Course/flash-card-project-start/images/wrong.png")
+wrong_img = PhotoImage(file="")
 wrong = Button(image=wrong_img,bg=BACKGROUND_COLOR,highlightthickness=0,command=next_card)
 wrong.grid(column=0,row=1)
 
 
-right_img = PhotoImage(file="E:/Python/Course/flash-card-project-start/images/right.png")
+right_img = PhotoImage(file="")
 right = Button(image=right_img,bg=BACKGROUND_COLOR,highlightthickness=0,command=is_known)
 right.grid(column=1,row=1)
 
